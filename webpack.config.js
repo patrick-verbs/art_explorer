@@ -13,7 +13,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: false,
-    port: 9001
+    port: 8081
   },
   plugins: [
     new CleanWebpackPlugin(),
