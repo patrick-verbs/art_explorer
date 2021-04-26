@@ -1,11 +1,17 @@
-# PROJECT NAME
-## By Usarneme/Tom
+# Art Explorer
+## By Patrick, Brent, Cristina, and Tom
+
+Patrick Lee <patricklee1138@gmail.com>
+Brent Hubbard <hubbardbrent@hotmail.com>
+Cristina Plesa <cristinaplesa8@gmail.com>
+Tom/Usarneme <jamestcoop@gmail.com>
 
 ---
 
 ### Project Description
 
-This project is a web application that DESCRIPTION
+This project is a web application that allows the visitor to check out art from different parts of the world. For the MVP we are focusing on four regions: Malian, East Asian, Latin American, and European art.
+
 ---
 ### Tech Stack
 1. HTML5+CSS3
