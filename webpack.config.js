@@ -18,9 +18,15 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'TITLE',
+      title: 'Art Explorer',
       template: './src/index.html',
       inject: 'body'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Art Explorer - Flashcards',
+      template: './src/flashcards.html',
+      inject: 'body',
+      filename: 'flashcards.html'
     })
   ],
   module: {
