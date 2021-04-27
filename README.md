@@ -2,9 +2,13 @@
 ## By Patrick, Brent, Cristina, and Tom
 
 Patrick Lee <patricklee1138@gmail.com>
+
 Brent Hubbard <hubbardbrent@hotmail.com>
+
 Cristina Plesa <cristinaplesa8@gmail.com>
+
 Tom/Usarneme <jamestcoop@gmail.com>
+
 
 ---
 
