@@ -6,33 +6,57 @@
 </head>
 
 <body>
-  <section class="container-fluid main">
-    <div class="jumbotron text-center">
+  <div class="container-fluid main">
+    <div class="jumbotron mb-0 text-center">
       <h1>The Art Explorer Webpage</h1>
     </div>
-    <button class="btn" id="flashcards-button">Show Flashcards</button>
-    <p>Please select a region to start exploring...</p>
-    <div class="container mt-2 mb-2">
-      <div class="row">
-        <div class="col-md-3">
-          <button id="Art%20of%20the%20Americas" class="btn btn-lg btn-block btn-outline-info">The Americas</button>
-        </div>
-        <div class="col-md-3">
-          <button id="Japanese%20Art" class="btn btn-lg btn-block btn-outline-info">Asia</button>
-        </div>
-        <div class="col-md-3">
-          <button id="African%20Art" class="btn btn-lg btn-block btn-outline-info">Africa</button>
-        </div>
-        <div class="col-md-3">
-          <button id="European%20Painting%20and%20Sculpture" class="btn btn-lg btn-block btn-outline-info">Europe</button>
+    <button class="btn m-0 mb-3 active-button" id="home-button">Art Explorer</button>
+    <button class="btn m-0 mb-3" id="flashcards-button">Flashcards</button>
+    <section class="art_explorer">
+      <div class="container mt-2 mb-2">
+        <p>Please select a region to start exploring...</p>
+        <div class="row">
+          <div class="col-md-3">
+            <button id="Art%20of%20the%20Americas" class="btn btn-lg btn-block btn-outline-info art-button">The Americas</button>
+          </div>
+          <div class="col-md-3">
+            <button id="Japanese%20Art" class="btn btn-lg btn-block btn-outline-info art-button">Asia</button>
+          </div>
+          <div class="col-md-3">
+            <button id="African%20Art" class="btn btn-lg btn-block btn-outline-info art-button">Africa</button>
+          </div>
+          <div class="col-md-3">
+            <button id="European%20Painting%20and%20Sculpture" class="btn btn-lg btn-block btn-outline-info art-button">Europe</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="container mt-2 mb-2 category-results"></div>
-  </section>
-  <section>
-    <div class="flashcards"></div>
-  </section>
+      <div class="container mt-2 mb-2 category-results"></div>
+    </section>
+    <section class="flashcards">
+      <div class="container-fluid mt-5 mb-2">
+        <div class="container">
+          <div class="d-flex flex-row justify-content-center align-items-center">
+            <button class="d-flex justify-content-start mr-auto btn btn-outline-info" id="previous"><</button>
+            <div class="d-flex flex-column justify-content-center">
+              <div class="p-4">
+                <button class="btn btn-lg btn-outline-info card-front">Front</button>
+                <button class="btn btn-lg btn-outline-success card-back" style="display: none;">Back</button>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end ml-auto btn btn-outline-info" id="next">></div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="card p-4 mt-5 ml-auto mr-auto" style="max-width: 300px;">
+          <h3 class="border-bottom">Keyboard shortcuts</h3>
+          <p class="m-0 p-0">previous card : ,</p>
+          <p class="m-0 p-0">next card : .</p>
+          <p class="m-0 p-0">flip card : enter/return/tap/mouseclick</p>
+        </div>
+      </div>
+    </section>
+  </div>
 </body>
 
 </html>
