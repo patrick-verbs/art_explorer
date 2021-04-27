@@ -2,18 +2,24 @@ import $ from 'jquery'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './css/styles.css'
+import ClevelandArt from './api-service.js'
 
-console.log($)
 // function getData(response) {
 //   if (response.) {
-    
+
 //   }
 // }
 
-$('#Art%20of%20the%20Americas').click(function() {
-  let department = 'Art%20of%20the%20Americas'
+
+$("button").click(function (event) {
+  console.log(event.currentTarget)
+  const department = event.currentTarget.id.trim()
+  console.log(department)
   ClevelandArt.getArt(department)
-    .then(function(response) {
-      getData(response);
+    .then(function (response) {
+      console.log(response)
+      // getData(response);
     })
 })
+
+
