@@ -16,7 +16,7 @@ export default class ClevelandArt {
 
 function determineSkip(department) {
   // department random skip lengths
-  // European = 715 European%20Painting%20and%20Sculpture 715 / 30 results per page ~= 23 pages of results
+  // European = 715 total pieces of art in the European%20Painting%20and%20Sculpture department: 715 / 30 results per page ~= 23 pages of results
   // Art of the Americas = 946 Art%20of%20the%20Americas 946 / 30 ~= 31
   // African Art = 345 African%20Art
   // Japanese Art = 2498 Japanese%20Art

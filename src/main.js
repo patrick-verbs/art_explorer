@@ -11,9 +11,13 @@ function showData(artDataArray) {
     html += `<h2 class="title">${artData.title}</h2>`
     html += `<h4 class="creation_date">Created c. ${artData.creation_date}</h4>`
     html += `<h6 class="culture">${artData.culture}</h6>`
-    html += `<p class="fun_fact">${artData.fun_fact}</p>`
+    if (artData.fun_fact) html += `<p class="fun_fact">${artData.fun_fact}</p>`
     html += `<div class="images"><img width="300px;" src="${artData.images.web.url}"></div>`
-    html += `<p class="wall_description">${artData.wall_description}</p>`
+    if (artData.wall_description) {
+      html += `<p class="wall_description">${artData.wall_description}</p>`
+    } else if (artData.tombstone) {
+      html += `<p class="tombstone">${artData.tombstone}</p>`
+    }
     html += `</div>`
   })
   html += `</div>`
