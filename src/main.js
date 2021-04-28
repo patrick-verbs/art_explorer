@@ -70,7 +70,9 @@ $(".art-button").click(function (event) {
         return alert(`you have encountered an error ${response.statusText}`)
       }
       saveToCache(department, response.data)
-      showData(response.data);
+      showData(response.data)
+      CURRENT_CARD = 0
+      showCurrentCard()
     })
   $(this).addClass("active")
 })
@@ -94,9 +96,9 @@ $("#flashcards-button").on("click", function () {
 
 // dynamic elements do not exist until created by earlier functions
 function addEventHandlers() {
-  $("#card-front").on("click", function () {
+  $(".card-front").on("click", function () {
     // show back, hide front
-    $("#card-front").hide()
+    $(".card-front").hide()
     $(".card-back").show()
   })
 
@@ -119,11 +121,20 @@ $("body").on("keyup", function (event) {
 })
 
 $("#next").on("click", () => {
-  console.log("next button clicked")
   // if there is a next card, increment
+  if (CURRENT_CARD < 29) {
+    CURRENT_CARD += 1
+  }
+  // then show the card
+  showCurrentCard()
 })
 
 $("#previous").on("click", () => {
   console.log("previous button clicked")
   // if there is a previous card, decrement
+  if (CURRENT_CARD > 0) {
+    CURRENT_CARD -= 1
+  }
+  // then show the card
+  showCurrentCard()
 })
