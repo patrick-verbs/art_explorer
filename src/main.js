@@ -58,6 +58,36 @@ function showCurrentCard() {
   addEventHandlers()
 }
 
+function showFront() {
+  $(".card-front").hide()
+  $(".card-back").show()
+}
+
+function showBack() {
+  $(".card-back").hide()
+  $(".card-front").show()
+}
+
+function previousCard() {
+  console.log("previous button clicked")
+  // if there is a previous card, decrement
+  if (CURRENT_CARD > 0) {
+    CURRENT_CARD -= 1
+  }
+  // then show the card
+  showCurrentCard()
+}
+
+function nextCard() {
+  // if there is a next card, increment
+  if (CURRENT_CARD < 29) {
+    CURRENT_CARD += 1
+  }
+  // then show the card
+  showCurrentCard()
+}
+
+// EVENT HANDLERS
 $(".art-button").click(function (event) {
   $(".art-button").removeClass("active")
   const department = event.currentTarget.id
@@ -97,44 +127,37 @@ $("#flashcards-button").on("click", function () {
 // dynamic elements do not exist until created by earlier functions
 function addEventHandlers() {
   $(".card-front").on("click", function () {
-    // show back, hide front
-    $(".card-front").hide()
-    $(".card-back").show()
+    showFront()
   })
 
   $(".card-back").on("click", function () {
-    $(".card-back").hide()
-    $(".card-front").show()
+    showBack()
+  })
+
+  $("body").on("keyup", function (event) {
+    if (event.originalEvent.code === "Enter") {
+      console.log("Enter key pressed")
+      const backShowing = $(".card-front")[0].style.display === "none"
+      console.log(backShowing)
+      if (backShowing) {
+        showFront()
+      } else {
+        showBack()
+      }
+    }
+    if (event.originalEvent.code === "Comma") {
+      previousCard()
+    }
+    if (event.originalEvent.code === "Period") {
+      nextCard()
+    }
   })
 }
 
-$("body").on("keyup", function (event) {
-  if (event.originalEvent.code === "Enter") {
-    console.log("Enter key pressed")
-  }
-  if (event.originalEvent.code === "Comma") {
-    console.log("Comma key pressed")
-  }
-  if (event.originalEvent.code === "Period") {
-    console.log("Period key pressed")
-  }
-})
-
 $("#next").on("click", () => {
-  // if there is a next card, increment
-  if (CURRENT_CARD < 29) {
-    CURRENT_CARD += 1
-  }
-  // then show the card
-  showCurrentCard()
+  nextCard()
 })
 
 $("#previous").on("click", () => {
-  console.log("previous button clicked")
-  // if there is a previous card, decrement
-  if (CURRENT_CARD > 0) {
-    CURRENT_CARD -= 1
-  }
-  // then show the card
-  showCurrentCard()
+  previousCard()
 })
