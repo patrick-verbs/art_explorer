@@ -1,15 +1,64 @@
+:root, html, body {
+  background-color: #edca94;
+  min-height: 99vh;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  margin: 22px 0;
+  padding: 11px;
+}
+
 img {
   max-width: 100%;
 }
-.jumbotron {
-  background-color: lightblue;
+
+h1 {
+  align-self: center;
 }
 
-.active-button {
-  border-bottom: 4px solid lime;
-  /* background: rgba(200,200,200,0.75); */
+.jumbotron {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background-color: lightblue;
+  border-radius: 0;
+  font-family: fantasy;
+  min-height: 150px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+img.image {
+  width: 300px;
+  border-radius: 4px;
+}
+
+a.active {
+  /* border-bottom: 4px solid lime; */
+  background: rgba(255,255,255,0.85);
+  padding-left: 10px!important;
 }
 
 .flashcards {
   display: none;
+}
+
+.vertical-divider {
+  border-left: 2px solid gray;
+  margin: 0 20px;
+}
+
+.nav-link {
+  padding-left: 10px!important;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+}
+
+.card {
+  background: rgba(255,255,255,0.75);
 }

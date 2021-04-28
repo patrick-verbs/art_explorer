@@ -5,13 +5,14 @@ import './css/styles.css'
 import ClevelandArt from './api-service.js'
 
 function showData(artDataArray) {
-  let html = `<div class="row">`
+  let html = `<div class="row g-3">`
   artDataArray.forEach(function (artData) {
-    html += `<div class="col-xs-12 col-sm-6 col-md-4 p-2 card">`
+    html += `<div class="col-xs-12 col-sm-6 col-md-4">`
+    html += `<div class="p-2 card">`
     html += `<h2 class="title">${artData.title}</h2>`
     if (artData.creators.length > 0) {
       html += `<h3 class="creator">`
-      artData.creators.forEach(function(creator, index) {
+      artData.creators.forEach(function (creator, index) {
         if (index > 1) html += `, `
         html += creator.description
       })
@@ -20,13 +21,13 @@ function showData(artDataArray) {
     html += `<h4 class="creation_date">Created ${artData.creation_date}</h4>`
     html += `<h6 class="culture">${artData.culture}</h6>`
     if (artData.fun_fact) html += `<p class="fun_fact">${artData.fun_fact}</p>`
-    html += `<div class="images"><img width="300px;" src="${artData.images.web.url}"></div>`
+    html += `<div class="images"><img class="image" src="${artData.images.web.url}"></div>`
     if (artData.wall_description) {
       html += `<p class="wall_description">${artData.wall_description}</p>`
     } else if (artData.tombstone) {
       html += `<p class="tombstone">${artData.tombstone}</p>`
     }
-    html += `</div>`
+    html += `</div></div>`
   })
   html += `</div>`
   $(".category-results").html(html)
@@ -36,22 +37,24 @@ function cacheData(dataUrl, data) {
   localStorage.setItem(dataUrl, JSON.stringify(data))
 }
 
-function retrieveCache(dataUrl) {
-  return JSON.parse(localStorage.getItem(dataUrl))
-}
+// function retrieveCache(dataUrl) {
+// 0: "African%20Art"
+// 1: "European%20Painting%20and%20Sculpture"
+// ​2: "Japanese%20Art"
+// 3: "Art%20of%20the%20Americas"
+//   return JSON.parse(localStorage.getItem(dataUrl))
+// }
 
-function showFlashcardsPage() {
-  const cache = retrieveCache()
-  console.log(cache)
-  // TODO
-}
+// function showFlashcardsPage() {
+//   const cache = retrieveCache()
+//   console.log(cache)
+//   // TODO
+// }
 
 $(".art-button").click(function (event) {
   $(".art-button").removeClass("active")
   const department = event.currentTarget.id.trim()
-  if (department === "flashcards-button") {
-    return showFlashcardsPage()
-  }
+  $(".selected-category").html(`<h2 class="text-center">Viewing: ${department.replaceAll("%20", " ")}</h2>`)
   ClevelandArt.getArt(department)
     .then(function (response) {
       if (response instanceof Error || (response && response.message && response.stack)) {
@@ -73,9 +76,9 @@ $("#home-button").on("click", function () {
   // hide the flashcards page
   $(".flashcards").hide()
   // make the home button active
-  $("#home-button").addClass("active-button")
+  $("#home-button").addClass("active")
   // make the flashcard button inactive
-  $("#flashcards-button").removeClass("active-button")
+  $("#flashcards-button").removeClass("active")
 })
 
 $("#flashcards-button").on("click", function () {
@@ -84,9 +87,9 @@ $("#flashcards-button").on("click", function () {
   // show the flashcards page
   $(".flashcards").show()
   // make the flashcards button active
-  $("#flashcards-button").addClass("active-button")
+  $("#flashcards-button").addClass("active")
   // make the homepage button inactive
-  $("#home-button").removeClass("active-button")
+  $("#home-button").removeClass("active")
 })
 
 $("body").on("keyup", function (event) {

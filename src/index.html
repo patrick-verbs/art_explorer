@@ -7,52 +7,72 @@
 
 <body>
   <div class="container-fluid main">
-    <div class="jumbotron mb-0 text-center">
+    <div class="jumbotron text-center">
       <h1>The Art Explorer Webpage</h1>
     </div>
-    <button class="btn m-0 mb-3 active-button" id="home-button">Art Explorer</button>
-    <button class="btn m-0 mb-3" id="flashcards-button">Flashcards</button>
-    <section class="art_explorer">
-      <div class="container mt-2 mb-2">
-        <p>Please select a region to start exploring...</p>
-        <div class="row">
-          <div class="col-md-3">
-            <button id="Art%20of%20the%20Americas" class="btn btn-lg btn-block btn-outline-info art-button">The Americas</button>
-          </div>
-          <div class="col-md-3">
-            <button id="Japanese%20Art" class="btn btn-lg btn-block btn-outline-info art-button">Asia</button>
-          </div>
-          <div class="col-md-3">
-            <button id="African%20Art" class="btn btn-lg btn-block btn-outline-info art-button">Africa</button>
-          </div>
-          <div class="col-md-3">
-            <button id="European%20Painting%20and%20Sculpture" class="btn btn-lg btn-block btn-outline-info art-button">Europe</button>
-          </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" id="home-button">Art Explorer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="flashcards-button">Flashcards</a>
+            </li>
+            <div class="vertical-divider"></div>
+            <li class="nav-item">
+              <a id="Art%20of%20the%20Americas" class="nav-link mr-2 art-button">The Americas</a>
+            </li>
+            <li class="nav-item">
+              <a id="Japanese%20Art" class="nav-link mr-2 art-button">Asia</a>
+            </li>
+            <li class="nav-item">
+              <a id="African%20Art" class="nav-link mr-2 art-button">Africa</a>
+            </li>
+            <li class="nav-item">
+              <a id="European%20Painting%20and%20Sculpture" class="nav-link mr-2 art-button">Europe</a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="container mt-2 mb-2 category-results"></div>
+    </nav>
+
+    <div class="container mt-4 selected-category"></div>
+
+    <section class="container">
+      <div class="art_explorer category-results"></div>
     </section>
-    <section class="flashcards">
-      <div class="container-fluid mt-5 mb-2">
-        <div class="container">
-          <div class="d-flex flex-row justify-content-center align-items-center">
-            <button class="d-flex justify-content-start mr-auto btn btn-outline-info" id="previous"><</button>
-            <div class="d-flex flex-column justify-content-center">
-              <div class="p-4">
-                <button class="btn btn-lg btn-outline-info card-front">Front</button>
-                <button class="btn btn-lg btn-outline-success card-back" style="display: none;">Back</button>
+
+    <section class="container">
+      <div class="flashcards">
+        <div class="container-fluid mt-5 mb-2">
+          <div class="container">
+            <div class="d-flex flex-row justify-content-center align-items-center">
+              <button class="d-flex justify-content-start me-auto btn btn-outline-info" id="previous">⬅</button>
+              <div class="d-flex flex-column justify-content-center">
+                <div class="p-4">
+                  <button class="btn btn-lg btn-outline-info card-front">Front</button>
+                  <button class="btn btn-lg btn-outline-success card-back" style="display: none;">Back</button>
+                </div>
               </div>
+              <div class="d-flex justify-content-end ms-auto btn btn-outline-info" id="next">➡</div>
             </div>
-            <div class="d-flex justify-content-end ml-auto btn btn-outline-info" id="next">></div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="card p-4 mt-5 ml-auto mr-auto" style="max-width: 300px;">
-          <h3 class="border-bottom">Keyboard shortcuts</h3>
-          <p class="m-0 p-0">previous card : ,</p>
-          <p class="m-0 p-0">next card : .</p>
-          <p class="m-0 p-0">flip card : enter/return/tap/mouseclick</p>
+        <div class="container">
+          <div class="ms-auto me-auto" style="max-width: 300px;">
+            <div class="card p-4 mt-5">
+              <h3 class=" border-bottom">Keyboard shortcuts</h3>
+              <p class="m-0 p-0">previous card : ,</p>
+              <p class="m-0 p-0">next card : .</p>
+              <p class="m-0 p-0">flip card : enter/tap/click</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
