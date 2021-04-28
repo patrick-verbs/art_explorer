@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './css/styles.css'
 import ClevelandArt from './api-service.js'
 
+let CURRENT_CARD = 0
+
 function showData(artDataArray) {
   let html = `<div class="row g-3">`
   artDataArray.forEach(function (artData) {
@@ -33,64 +35,76 @@ function showData(artDataArray) {
   $(".category-results").html(html)
 }
 
-function cacheData(dataUrl, data) {
+function saveToCache(dataUrl, data) {
   localStorage.setItem(dataUrl, JSON.stringify(data))
 }
 
-// function retrieveCache(dataUrl) {
-// 0: "African%20Art"
-// 1: "European%20Painting%20and%20Sculpture"
-// ​2: "Japanese%20Art"
-// 3: "Art%20of%20the%20Americas"
-//   return JSON.parse(localStorage.getItem(dataUrl))
-// }
+function retrieveFromCache(department) {
+  return JSON.parse(localStorage.getItem(department))
+}
 
-// function showFlashcardsPage() {
-//   const cache = retrieveCache()
-//   console.log(cache)
-//   // TODO
-// }
+function showCurrentCard() {
+  // get the cached art image data for the currently selected department
+  const data = retrieveFromCache(localStorage.getItem("currentDepartment"))
+  console.log(data)
+  let html = `<button id="card-front" class="btn btn-lg btn-outline-info card-front">`
+  // more html -- the image
+  html += `<div class="images"><img class="image" src="${data[CURRENT_CARD].images.web.url}"></div>`
+  html += `</button> <button class="btn btn-lg btn-outline-success card-back" style="display: none;">`
+  // more html -- the info on back
+  html += `<h6 class="tombstone">${data[CURRENT_CARD].tombstone}</h6>`
+  html += `</button>`
+  $(".card-holder").html(html)
+  addEventHandlers()
+}
 
 $(".art-button").click(function (event) {
   $(".art-button").removeClass("active")
-  const department = event.currentTarget.id.trim()
+  const department = event.currentTarget.id
+  // store the currently selected category in localstorage
+  localStorage.setItem("currentDepartment", department)
   $(".selected-category").html(`<h2 class="text-center">Viewing: ${department.replaceAll("%20", " ")}</h2>`)
   ClevelandArt.getArt(department)
     .then(function (response) {
       if (response instanceof Error || (response && response.message && response.stack)) {
         return alert(`you have encountered an error ${response.statusText}`)
       }
-      console.log(response)
-      // now we know we don't have an error...
-      // save the data to local storage
-      cacheData(department, response.data)
-      // show the data on screen
+      saveToCache(department, response.data)
       showData(response.data);
     })
   $(this).addClass("active")
 })
 
 $("#home-button").on("click", function () {
-  // show the home page
   $(".art_explorer").show()
-  // hide the flashcards page
   $(".flashcards").hide()
-  // make the home button active
   $("#home-button").addClass("active")
-  // make the flashcard button inactive
   $("#flashcards-button").removeClass("active")
 })
 
 $("#flashcards-button").on("click", function () {
-  // hide the home page
   $(".art_explorer").hide()
-  // show the flashcards page
-  $(".flashcards").show()
-  // make the flashcards button active
   $("#flashcards-button").addClass("active")
-  // make the homepage button inactive
   $("#home-button").removeClass("active")
+  // pass the cached data to the flashcards app section
+  showCurrentCard()
+  // show the flashcard set
+  $(".flashcards").show()
 })
+
+// dynamic elements do not exist until created by earlier functions
+function addEventHandlers() {
+  $("#card-front").on("click", function () {
+    // show back, hide front
+    $("#card-front").hide()
+    $(".card-back").show()
+  })
+
+  $(".card-back").on("click", function () {
+    $(".card-back").hide()
+    $(".card-front").show()
+  })
+}
 
 $("body").on("keyup", function (event) {
   if (event.originalEvent.code === "Enter") {
@@ -106,8 +120,10 @@ $("body").on("keyup", function (event) {
 
 $("#next").on("click", () => {
   console.log("next button clicked")
+  // if there is a next card, increment
 })
 
 $("#previous").on("click", () => {
   console.log("previous button clicked")
+  // if there is a previous card, decrement
 })
