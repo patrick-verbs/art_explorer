@@ -30,7 +30,7 @@ This project is a web application that allows the visitor to check out art from 
 
 ### Project Build Available At:
 
-[http://art_explorer.surge.sh/t_explorer.surge.sh/](http://art_explorer.surge.sh/)
+[http://art_explorer.surge.sh/](http://art_explorer.surge.sh/)
 
 ---
 ### Installation Instructions
@@ -48,7 +48,7 @@ This project is a web application that allows the visitor to check out art from 
 
 
 ---
-### License is GPLv3 and I make no claim to copyright.
+### License is GPLv3 and we make no claim to copyright.
 <br />
 
 > You can't steal what is freely given. Enjoy!
